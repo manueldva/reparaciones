@@ -7,7 +7,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>Crear Cliente</strong>
+					<strong>Crear Recepción</strong>
 				</div>
 		
 				<div class="panel-body">
