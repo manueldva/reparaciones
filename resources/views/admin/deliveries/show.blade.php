@@ -15,7 +15,7 @@
 
 					<p> <strong>Cliente:</strong> {{ $delivery->reception->client->name }}</p>
 
-					<p> <strong>Equipo:</strong> {{ $delivery->reception->equipment }}</p>
+					<p> <strong>Equipo:</strong> {{ $delivery->reception->equipment->description }}</p>
 					
 					<p> <strong>Trabajo Hecho:</strong> {{ $delivery->workDone }}</p>
 

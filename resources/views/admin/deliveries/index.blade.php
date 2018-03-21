@@ -32,7 +32,7 @@
 									<tr>
 										<td>{{ $delivery->id }}</td>
 										<td>{{ $delivery->reception->client->name }}</td>
-										<td>{{ $delivery->reception->equipment }}</td>
+										<td>{{ $delivery->reception->equipment->description }}</td>
 										<td>{{ $delivery->deliverDate }}</td>
 										<td width="10px">
 											<a href="{{ route('deliveries.show', $delivery->id) }}" class="btn btn-sm btn-default">

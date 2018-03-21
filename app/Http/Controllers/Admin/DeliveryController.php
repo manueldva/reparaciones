@@ -44,8 +44,16 @@ class DeliveryController extends Controller
      */
     public function create()
     {   
-        $receptions = Reception::where('status','RECEIVED')->orderBy('id', 'ASC')->pluck('id', 'id');
+        $receptions =  array();
 
+        $receptionstemp = Reception::where('status','RECEIVED')->get();
+
+        foreach ($receptionstemp as  $value) {
+            $client = Client::find($value->client_id);
+            $receptions  = [ $value->id => $client->name];
+        }
+
+        //$receptions = Reception::where('status','RECEIVED')->orderBy('id', 'ASC')->pluck('id', 'id');
         return view('admin.deliveries.create', compact('receptions'));
 
     }
@@ -92,7 +100,17 @@ class DeliveryController extends Controller
         
         $delivery->deliverDate = FechaHelper::getFechaInputDate($delivery->deliverDate); 
 
-        $receptions = Reception::where('id',$delivery->reception_id)->orderBy('id', 'ASC')->pluck('id', 'id');
+        
+        $receptions =  array();
+
+        $receptionstemp = Reception::where('id',$delivery->reception_id)->get();
+
+        foreach ($receptionstemp as  $value) {
+            $client = Client::find($value->client_id);
+            $receptions  = [ $value->id => $client->name];
+        }
+        
+        //$receptions = Reception::where('id',$delivery->reception_id)->orderBy('id', 'ASC')->pluck('id', 'id');
 
         return view('admin.deliveries.edit', compact('delivery', 'receptions'));
     }

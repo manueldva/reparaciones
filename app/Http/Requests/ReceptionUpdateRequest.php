@@ -24,11 +24,11 @@ class ReceptionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'client_id'   => 'required',
-            'equipment'   => 'required',
-            'description' => 'required',
-            'reason_id'   => 'required',
-            'concept'     => 'required'
+            'client_id'     => 'required',
+            'equipment_id'  => 'required',
+            'description'   => 'required',
+            'reason_id'     => 'required',
+            'concept'       => 'required'
             //'status' => 'required|in:WAITING,RECEIVED'
 
         ];

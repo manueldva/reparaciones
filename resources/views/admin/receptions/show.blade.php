@@ -15,7 +15,7 @@
 
 					<p> <strong>Cliente:</strong> {{ $reception->client->name }}</p>
 
-					<p> <strong>Equipo:</strong> {{ $reception->equipment }}</p>
+					<p> <strong>Equipo:</strong> {{ $reception->equipment->description }}</p>
 
 					<p> <strong>Concepto:</strong> {{ $reception->concept }}</p>
 				</div>

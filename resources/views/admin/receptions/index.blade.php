@@ -32,7 +32,7 @@
 									<tr>
 										<td>{{ $reception->id }}</td>
 										<td>{{ $reception->client->name }}</td>
-										<td>{{ $reception->equipment }}</td>
+										<td>{{ $reception->equipment->description }}</td>
 										<td>{{ $reception->reason->description }}</td>
 										<td width="10px">
 											<a href="{{ route('receptions.show', $reception->id) }}" class="btn btn-sm btn-default">

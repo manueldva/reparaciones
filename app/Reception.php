@@ -8,13 +8,18 @@ class Reception extends Model
 {
     
     protected $fillable = [
-		'client_id', 'equipment', 'description', 'reason_id', 'concept', 'status'
+		'client_id', 'equipment_id', 'description', 'reason_id', 'concept', 'status'
 	];
 	    
 
    	public function reason(){
 		
 		return $this->belongsTo(Reason::class);
+	}
+
+	public function equipment(){
+		
+		return $this->belongsTo(Equipment::class);
 	}
 
 	public function client(){

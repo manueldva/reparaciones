@@ -17,7 +17,9 @@ class CreateReceptionsTable extends Migration
             $table->increments('id');
             $table->integer('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('equipment', 128);
+            $table->integer('equipment_id')->unsigned();
+            $table->foreign('equipment_id')->references('id')->on('equipment')->onDelete('cascade')->onUpdate('cascade');
+            //$table->string('equipment', 128);
             $table->string('description', 512);
             $table->integer('reason_id')->unsigned();
             $table->foreign('reason_id')->references('id')->on('reasons')->onDelete('cascade')->onUpdate('cascade');
