@@ -29,5 +29,6 @@ route::get('etiqueta/{slug}', 'Web\PageController@tag')->name('tag');
 route::resource('clients', 		'Admin\ClientController');
 route::resource('receptions',   'Admin\ReceptionController');
 route::resource('deliveries', 		'Admin\DeliveryController');
+route::get('/print/{id}',		'Admin\DeliveryController@print')->name('print');
 
 //

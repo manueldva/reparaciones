@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\FechaHelper;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use App\Http\Requests\DeliveryStoreRequest;
 use App\Http\Requests\DeliveryUpdateRequest;
@@ -100,7 +101,6 @@ class DeliveryController extends Controller
         
         $delivery->deliverDate = FechaHelper::getFechaInputDate($delivery->deliverDate); 
 
-        
         $receptions =  array();
 
         $receptionstemp = Reception::where('id',$delivery->reception_id)->get();
@@ -109,7 +109,7 @@ class DeliveryController extends Controller
             $client = Client::find($value->client_id);
             $receptions  = [ $value->id => $client->name];
         }
-        
+
         //$receptions = Reception::where('id',$delivery->reception_id)->orderBy('id', 'ASC')->pluck('id', 'id');
 
         return view('admin.deliveries.edit', compact('delivery', 'receptions'));
@@ -148,5 +148,23 @@ class DeliveryController extends Controller
         $delivery->delete();
 
         return back()->with('info', 'Eliminado correctamente');
+    }
+
+
+    public function print($id)
+    {
+        $delivery = Delivery::where('id', $id)->get();
+        $delivery['0']['deliverDate'] = FechaHelper::getFechaImpresion($delivery['0']['deliverDate']); 
+
+        /*highlight_string(var_export($delivery->reception->client, true));
+        exit();*/
+
+        $pdf = PDF::loadView('admin.deliveries.print', compact('delivery'));
+
+        return $pdf->stream('reporte');
+
+        //return $pdf->download('informe.pdf');
+
+        //return $id;
     }
 }

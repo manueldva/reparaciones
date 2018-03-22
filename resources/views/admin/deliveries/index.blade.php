@@ -11,8 +11,8 @@
 					<a href="{{ route('deliveries.create')}}" class="btn btn-sm btn-primary pull-right">
 						Crear
 					</a>
+					
 				</div>
-		
 
 				<div class="panel-body">
 					<div class="table-responsive">
