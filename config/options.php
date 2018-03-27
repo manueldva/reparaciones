@@ -5,8 +5,8 @@ return array(
 
 	'types' => [
 		'' 			=> 'Seleccionar',
-		'proforma'  => 'Nro Proforma',
-		'fecha'		=> 'Fecha'
+		'codigo'  	=> 'Codigo',
+		'cliente'	=> 'Cliente'
 	] 
 
 

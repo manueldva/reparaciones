@@ -59,7 +59,9 @@
                                 <a id="register" href="{{ route('register') }}">Registrar</a>
                             </li>
                             <li class="dropdown">
+
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="glyphicon glyphicon-user"></span>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -68,6 +70,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+
                                             Cerrar Sesión
                                         </a>
 
