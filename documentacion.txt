@@ -1,0 +1,1 @@
+https://fuubar.wordpress.com/2013/06/04/remover-segmento-public-de-la-url-en-laravel/
