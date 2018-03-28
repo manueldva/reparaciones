@@ -20,6 +20,7 @@ class CreateDeliveriesTable extends Migration
             $table->timestamp('deliverDate');
             $table->decimal('workPrice',12,2)->default(0);
             $table->string('workDone', 4000);
+            $table->string('file', 128)->nullable();
             $table->timestamps();
         });
     }

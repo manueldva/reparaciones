@@ -18,6 +18,11 @@
 					<p> <strong>Equipo:</strong> {{ $reception->equipment->description }}</p>
 
 					<p> <strong>Concepto:</strong> {{ $reception->concept }}</p>
+
+					@if($reception->file)
+					<p> <strong>Imagen:</strong></p>
+                        <img src="{{ $reception->file }}" class="img-responsive">
+                    @endif
 				</div>
 			</div>
 		</div>

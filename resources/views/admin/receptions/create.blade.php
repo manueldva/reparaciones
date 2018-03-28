@@ -11,7 +11,7 @@
 				</div>
 		
 				<div class="panel-body">
-					{!! Form::open(['route' => 'receptions.store']) !!}
+					{!! Form::open(['route' => 'receptions.store', 'files' => true]) !!}
 
 						@include('admin.receptions.partials.form')
 

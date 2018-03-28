@@ -7,9 +7,15 @@
 	{{ form::label('equipment_id', 'Equipo:') }}
 	{{ form::select('equipment_id', $equipment, null, ['class' => 'form-control'] ) }}
 </div>
+
 <div class="form-group">
 	{{ form::label('description', 'Descripcion') }}
 	{{ form::textarea('description', null, ['class' => 'form-control']) }}
+</div>
+
+<div class="form-group">
+    {{ Form::label('image', 'Imagen') }}
+    {{ Form::file('image') }}
 </div>
 
 <div class="form-group">

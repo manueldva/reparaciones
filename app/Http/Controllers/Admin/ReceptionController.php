@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ReceptionStoreRequest;
 use App\Http\Requests\ReceptionUpdateRequest;
+use Illuminate\Support\Facades\Storage;
+
 use App\Delivery;
 use App\Reception;
 use App\Client;
@@ -58,6 +60,13 @@ class ReceptionController extends Controller
     {
         $receptions = Reception::create($request->all());
 
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $receptions->fill(['file' => asset($path)])->save();
+        }
+
+
         return redirect()->route('receptions.edit', $receptions->id)->with('info', 'Recepción creada con exito');
     }
 
@@ -103,6 +112,12 @@ class ReceptionController extends Controller
         $reception = Reception::find($id);
 
         $reception->fill($request->all())->save();
+
+        //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $reception->fill(['file' => asset($path)])->save();
+        }
 
         return redirect()->route('receptions.edit', $reception->id)->with('info', 'Recepción actualizada con exito');
     }

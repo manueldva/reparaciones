@@ -25,6 +25,7 @@ class CreateReceptionsTable extends Migration
             $table->foreign('reason_id')->references('id')->on('reasons')->onDelete('cascade')->onUpdate('cascade');
             $table->string('concept', 4000)->nullable();
             $table->enum('status',['WAITING', 'RECEIVED ', 'REPAIRING'])->default('WAITING');
+            $table->string('file', 128)->nullable();
             //$table->string('email', 128)->nullable();
             $table->timestamps();
         });

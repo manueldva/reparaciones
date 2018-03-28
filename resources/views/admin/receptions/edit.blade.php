@@ -12,7 +12,7 @@
 		
 				<div class="panel-body">
 
-					{!! Form::model($reception, ['route' => ['receptions.update', $reception->id], 'method' => 'PUT']) !!}
+					{!! Form::model($reception, ['route' => ['receptions.update', $reception->id], 'method' => 'PUT', 'files' => true]) !!}
                         
                         @include('admin.receptions.partials.form')
 

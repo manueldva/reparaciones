@@ -23,7 +23,7 @@ class ReceptionUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'client_id'     => 'required',
             'equipment_id'  => 'required',
             'description'   => 'required',
@@ -32,5 +32,10 @@ class ReceptionUpdateRequest extends FormRequest
             //'status' => 'required|in:WAITING,RECEIVED'
 
         ];
+
+        if($this->get('image'))        
+            $rules = array_merge($rules, ['image'         => 'mimes:jpg,jpeg,png']);
+        
+        return $rules;
     }
 }

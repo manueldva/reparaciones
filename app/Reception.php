@@ -8,7 +8,7 @@ class Reception extends Model
 {
     
     protected $fillable = [
-		'client_id', 'equipment_id', 'description', 'reason_id', 'concept', 'status'
+		'client_id', 'equipment_id', 'description' ,'file', 'reason_id', 'concept', 'status'
 	];
 	    
 
