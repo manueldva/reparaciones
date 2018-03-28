@@ -43,14 +43,14 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+                            <li><a href="{{ route('login') }}"> <span class="glyphicon glyphicon-share-alt"></span> Iniciar Sesión</a></li>
                             
                         @else
                             <li>
-                                <a id="deliveries" href="{{ route('deliveries.index') }}">Entrega</a>
+                                <a id="deliveries" href="{{ route('deliveries.index') }}">Entregas</a>
                             </li>
                             <li>
-                                <a id="receptions" href="{{ route('receptions.index') }}">Recepción</a>
+                                <a id="receptions" href="{{ route('receptions.index') }}">Recepciónes</a>
                             </li>
                             <li>
                                 <a  id="clients" href="{{ route('clients.index') }}">Clientes</a>

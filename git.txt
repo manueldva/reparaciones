@@ -1,0 +1,7 @@
+ssh-keygen
+
+git remote -v
+
+
+git remote add github  ssh://git@github.com/manueldva/ventas.git
+

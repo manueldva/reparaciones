@@ -18,7 +18,7 @@
 </div>
 
 <div class="form-group">
-	{{ form::submit('Guardar',['class' => 'btn btn-sm btn-primary']) }}
+	<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 </div>
 
 

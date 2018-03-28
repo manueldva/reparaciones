@@ -9,6 +9,7 @@
 				<div class="panel-heading">
 					<strong>Ver Entrega</strong>
 					<a  href="{{ route('print', $delivery->id) }}" class="btn btn-sm btn-default pull-right" target="_blank">
+						<span class="glyphicon glyphicon-print"></span>
 						Imprimir Detalle
 					</a>	
 				</div>
