@@ -67,13 +67,13 @@ class DeliveryController extends Controller
      */
     public function store(DeliveryStoreRequest $request)
     {
-        $deliveries = Delivery::create($request->all());
+        $delivery = Delivery::create($request->all());
 
         $reception = Reception::find($request->get('reception_id'));
             $reception->status = 'REPAIRING';
         $reception->save();
 
-        return redirect()->route('deliveries.edit', $deliveries->id)->with('info', 'Entrega creada con exito');
+        return redirect()->route('deliveries.edit', $delivery->id)->with('info', 'Entrega creada con exito');
     }
 
     /**
@@ -103,7 +103,7 @@ class DeliveryController extends Controller
 
         $receptions =  array();
 
-        $receptionstemp = Reception::where('id',$delivery->reception_id)->get();
+        $receptionstemp = Reception::where('id', $delivery->reception_id)->get();
 
         foreach ($receptionstemp as  $value) {
             $client = Client::find($value->client_id);

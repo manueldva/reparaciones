@@ -58,16 +58,16 @@ class ReceptionController extends Controller
      */
     public function store(ReceptionStoreRequest $request)
     {
-        $receptions = Reception::create($request->all());
+        $reception = Reception::create($request->all());
 
         //IMAGE 
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $receptions->fill(['file' => asset($path)])->save();
+            $reception->fill(['file' => asset($path)])->save();
         }
 
 
-        return redirect()->route('receptions.edit', $receptions->id)->with('info', 'Recepción creada con exito');
+        return redirect()->route('receptions.edit', $reception->id)->with('info', 'Recepción creada con exito');
     }
 
     /**
