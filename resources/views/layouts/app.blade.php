@@ -55,10 +55,7 @@
                             <li>
                                 <a  id="clients" href="{{ route('clients.index') }}">Clientes</a>
                             </li>
-                            <li>
-                                <a id="register" href="{{ route('register') }}">Registrar</a>
-                            </li>
-                            <li class="dropdown">
+                             <li class="dropdown">
 
                                 <a id="complements" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     <!--<span class="glyphicon glyphicon-user"></span>-->
@@ -72,6 +69,25 @@
                                         </a>
                                         <a href="{{ route('reasons.index') }}">
                                             Razones
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                            <li class="dropdown">
+
+                                <a id="users" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    <!--<span class="glyphicon glyphicon-user"></span>-->
+                                    Usuarios <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a  href="{{ route('register') }}">
+                                            Registrar Usuario
+                                        </a>
+                                        <a href="{{ route('manageusers.index') }}">
+                                            Gestionar Usuario
                                         </a>
                                     </li>
                                 </ul>
@@ -161,9 +177,13 @@
 
             $('#clients').css('background','#B5DEF7');
             //alert(pathname);
-        }else if (pathname.indexOf('register') != -1)  {
+        } else if (pathname.indexOf('register') != -1)  {
 
-            $('#register').css('background','#B5DEF7');
+            $('#users').css('background','#B5DEF7');
+
+        } else if (pathname.indexOf('manageusers') != -1)  {
+
+            $('#users').css('background','#B5DEF7');
 
         } else if (pathname.indexOf('receptions') != -1) {
 

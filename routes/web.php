@@ -35,4 +35,8 @@ route::get('/print/{id}',		'Admin\DeliveryController@print')->name('print');
 route::resource('equipments', 		'Admin\EquipmentController');
 route::resource('reasons', 		'Admin\ReasonController');
 
+	//para manejar tipos de usuarios mas adelante
+route::resource('manageusers', 		'Admin\ManageuserController');
+
+
 //
