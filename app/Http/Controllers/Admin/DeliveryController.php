@@ -51,7 +51,7 @@ class DeliveryController extends Controller
 
         foreach ($receptionstemp as  $value) {
             $client = Client::find($value->client_id);
-            $receptions  = [ $value->id => $client->name];
+            $receptions  = [ $value->id => $value->id .' - '. $client->name];
         }
 
         //$receptions = Reception::where('status','RECEIVED')->orderBy('id', 'ASC')->pluck('id', 'id');
