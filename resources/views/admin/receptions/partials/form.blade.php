@@ -5,7 +5,7 @@
 
 <div class="form-group">
 	{{ form::label('equipment_id', 'Equipo:') }}
-	{{ form::select('equipment_id', $equipment, null, ['class' => 'form-control'] ) }}
+	{{ form::select('equipment_id', $equipments, null, ['class' => 'form-control'] ) }}
 </div>
 
 <div class="form-group">

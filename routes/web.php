@@ -31,4 +31,6 @@ route::resource('receptions',   'Admin\ReceptionController');
 route::resource('deliveries', 		'Admin\DeliveryController');
 route::get('/print/{id}',		'Admin\DeliveryController@print')->name('print');
 
+route::resource('equipments', 		'Admin\EquipmentController');
+
 //

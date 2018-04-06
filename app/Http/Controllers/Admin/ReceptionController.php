@@ -44,9 +44,9 @@ class ReceptionController extends Controller
     {   
         $clients    = Client::orderBy('name', 'ASC')->pluck('name', 'id');
         $reasons    = Reason::orderBy('description', 'ASC')->pluck('description' , 'id');
-        $equipment = Equipment::orderBy('description', 'ASC')->pluck('description' , 'id');
+        $equipments = Equipment::orderBy('description', 'ASC')->pluck('description' , 'id');
 
-        return view('admin.receptions.create', compact('clients', 'reasons', 'equipment'));
+        return view('admin.receptions.create', compact('clients', 'reasons', 'equipments'));
 
     }
 
@@ -95,9 +95,9 @@ class ReceptionController extends Controller
 
         $clients    = Client::orderBy('name', 'ASC')->pluck('name', 'id');
         $reasons    = Reason::orderBy('description', 'ASC')->pluck('description' , 'id');
-        $equipment = Equipment::orderBy('description', 'ASC')->pluck('description' , 'id');
+        $equipments = Equipment::orderBy('description', 'ASC')->pluck('description' , 'id');
 
-        return view('admin.receptions.edit', compact('reception', 'clients', 'reasons', 'equipment'));
+        return view('admin.receptions.edit', compact('reception', 'clients', 'reasons', 'equipments'));
     }
 
     /**
