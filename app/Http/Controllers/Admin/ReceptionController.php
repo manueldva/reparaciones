@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Delivery;
 use App\Reception;
 use App\Client;
-use App\reason;
+use App\Reason;
 use App\Equipment;
 
 
