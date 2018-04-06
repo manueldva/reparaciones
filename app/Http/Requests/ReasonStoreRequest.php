@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EquipmentUpdateRequest extends FormRequest
+class ReasonStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class EquipmentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'description'       => 'required|unique:equipment,description,' . $this->equipment        
+            'description'       => 'required|unique:reasons,description'
         ];
     }
 }

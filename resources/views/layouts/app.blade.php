@@ -60,7 +60,7 @@
                             </li>
                             <li class="dropdown">
 
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a id="complements" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     <!--<span class="glyphicon glyphicon-user"></span>-->
                                     Complementos <span class="caret"></span>
                                 </a>
@@ -70,10 +70,12 @@
                                         <a href="{{ route('equipments.index') }}">
                                             Equipos
                                         </a>
-
-                                        
+                                        <a href="{{ route('reasons.index') }}">
+                                            Razones
+                                        </a>
                                     </li>
                                 </ul>
+                                
                             </li>
                             <li class="dropdown">
 
@@ -170,6 +172,14 @@
         }else if (pathname.indexOf('deliveries') != -1) {
 
             $('#deliveries').css('background','#B5DEF7');
+        
+        } else if (pathname.indexOf('equipments') != -1) {
+
+            $('#complements').css('background','#B5DEF7');
+        
+        } else if (pathname.indexOf('reasons') != -1) {
+
+            $('#complements').css('background','#B5DEF7');
         }
 
     </script>

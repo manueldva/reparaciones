@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\EquipmentStoreRequest;
-use App\Http\Requests\EquipmentUpdateRequest;
+use App\Http\Requests\ReasonStoreRequest;
+use App\Http\Requests\ReasonUpdateRequest;
 
-use App\Equipment;
+use App\Reason;
 use App\Reception;
 
-class EquipmentController extends Controller
+class ReasonController extends Controller
 {
     public function __construct()
     {
@@ -25,9 +25,9 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-       $equipments = Equipment::orderBy('id', 'DESC')->paginate();
+       $reasons = Reason::orderBy('id', 'DESC')->paginate();
 
-       return view('admin.complements.equipments.index', compact('equipments'));
+       return view('admin.complements.reasons.index', compact('reasons'));
     }
 
     /**
@@ -37,7 +37,7 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('admin.complements.equipments.create');
+        return view('admin.complements.reasons.create');
     }
 
     /**
@@ -46,11 +46,11 @@ class EquipmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EquipmentStoreRequest $request)
+    public function store(ReasonStoreRequest $request)
     {
-        $equipment = Equipment::create($request->all());
+        $reason = Reason::create($request->all());
 
-        return redirect()->route('equipments.edit', $equipment->id)->with('info', 'Equipo creado con exito');
+        return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon creada con exito');
     }
 
     /**
@@ -61,9 +61,9 @@ class EquipmentController extends Controller
      */
     public function show($id)
     {
-        $equipment = Equipment::find($id);
+        $reason = Reason::find($id);
 
-        return view('admin.complements.equipments.show', compact('equipment'));
+        return view('admin.complements.reasons.show', compact('reason'));
     }
 
     /**
@@ -74,9 +74,9 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        $equipment = Equipment::find($id);
+        $reason = Reason::find($id);
 
-        return view('admin.complements.equipments.edit', compact('equipment'));
+        return view('admin.complements.reasons.edit', compact('reason'));
     }
 
     /**
@@ -86,15 +86,15 @@ class EquipmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EquipmentUpdateRequest $request, $id)
+    public function update(ReasonUpdateRequest $request, $id)
     {
-        $equipment = Equipment::find($id);
+        $reason = Reason::find($id);
 
-        $equipment->fill($request->all())->save();
+        $reason->fill($request->all())->save();
 
         //return redirect()->route('admin.complements.equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
 
-        return redirect()->route('equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
+        return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon actualizada con exito');
     }
 
     /**
@@ -106,12 +106,12 @@ class EquipmentController extends Controller
     public function destroy($id)
     {
         
-        if(Reception::where('equipment_id', $id)->first()) 
+        if(Reception::where('reason_id', $id)->first()) 
         {
             return back()->with('danger', 'No se puede eliminar el registro');
         }
 
-        Equipment::find($id)->delete();
+        Reason::find($id)->delete();
 
         return back()->with('info', 'Eliminado correctamente');
     }

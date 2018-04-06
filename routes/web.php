@@ -31,6 +31,8 @@ route::resource('receptions',   'Admin\ReceptionController');
 route::resource('deliveries', 		'Admin\DeliveryController');
 route::get('/print/{id}',		'Admin\DeliveryController@print')->name('print');
 
+	//complementos
 route::resource('equipments', 		'Admin\EquipmentController');
+route::resource('reasons', 		'Admin\ReasonController');
 
 //
