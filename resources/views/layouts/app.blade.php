@@ -75,30 +75,23 @@
                                 </ul>
                                 
                             </li>
-                            <li class="dropdown">
-
-                                <a id="users" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    <!--<span class="glyphicon glyphicon-user"></span>-->
-                                    Usuarios <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a  href="{{ route('register') }}">
-                                            Registrar Usuario
-                                        </a>
-                                        <a href="{{ route('manageusers.index') }}">
-                                            Gestionar Usuario
-                                        </a>
-                                    </li>
-                                </ul>
-                                
+                            @if(Auth::user()->status == 'ADMINISTRATOR')
+                            <li>
+                                <a id="users" href="{{ route('manageusers.index') }}">Usuarios </a>
                             </li>
+                            @endif
+
                             <li class="dropdown">
 
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    @if(Auth::user()->file)
+                                        <img src="{{ Auth::user()->file }}" width="20" height="20" class="img-circle profile_img">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                            
+                                    @else
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    @endif
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -124,18 +117,6 @@
 
 
         
-        @if(session('info'))
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="alert alert-success">
-                            {{ session('info')}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-
         @if(session('danger'))
             <div class="container">
                 <div class="row">
@@ -148,24 +129,6 @@
             </div>
         @endif
 
-        
-        @if(count($errors))
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>
-                                        {{ $error }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
         @yield('content')
     </div>
 
@@ -187,9 +150,6 @@
 
             $('#clients').css('background','#B5DEF7');
             //alert(pathname);
-        } else if (pathname.indexOf('register') != -1)  {
-
-            $('#users').css('background','#B5DEF7');
 
         } else if (pathname.indexOf('manageusers') != -1)  {
 

@@ -7,12 +7,10 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong>Lista de Recepciones</strong> 
-					@if(Auth::user()->status !== 'READONLY')
-					<a href="{{ route('receptions.create')}}" class="btn btn-sm btn-primary pull-right">
+					<strong>Lista de Usuarios</strong> 
+					<a href="{{ route('manageusers.create')}}" class="btn btn-sm btn-primary pull-right">
 						Crear
 					</a>
-					@endif
 				</div>
 		
 
@@ -21,47 +19,44 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<!--<th width="10px"> ID</th>-->
-									<th> Codigo</th>
-									<th> Cliente</th>
-									<th> Equipo</th>
-									<th> Motivo</th>
+									<th width="10px"> ID</th>
+									<th> Nombre</th>
+									<th> Usuario</th>
+									<th> Estado</th>
 									<th colspan="3">&nbsp;</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($receptions as $reception)
+								@foreach ($users as $user)
 									<tr>
-										<td>{{ $reception->id }}</td>
-										<td>{{ $reception->client->name }}</td>
-										<td>{{ $reception->equipment->description }}</td>
-										<td>{{ $reception->reason->description }}</td>
+										<td>{{ $user->id }}</td>
+										<td>{{ $user->name }}</td>
+										<td>{{ $user->username }}</td>
+										<td>{{ $user->status }}</td>
 										<td width="10px">
-											<a href="{{ route('receptions.show', $reception->id) }}" class="btn btn-sm btn-default">
+											<a href="{{ route('manageusers.show', $user->id) }}" class="btn btn-sm btn-default">
 												Ver
 											</a>
 										</td>
-										@if(Auth::user()->status !== 'READONLY')
 										<td width="10px">
-											<a href="{{ route('receptions.edit', $reception->id) }}" class="btn btn-sm btn-default">
+											<a href="{{ route('manageusers.edit', $user->id) }}" class="btn btn-sm btn-default">
 												Editar
 											</a>
 										</td>
 										<td width="10px">
-											{{ Form::open(['route' => ['receptions.destroy', $reception->id], 'method' => 'DELETE']) }}
-												{!! Form::open(['route' => ['receptions.destroy', $reception->id], 'method' => 'DELETE']) !!}
+											{{ Form::open(['route' => ['manageusers.destroy', $user->id], 'method' => 'DELETE']) }}
+												{!! Form::open(['route' => ['manageusers.destroy', $user->id], 'method' => 'DELETE']) !!}
 	                                        	<button class="btn btn-sm btn-danger">
 	                                            	Eliminar
 	                                        	</button>                           
 	                                    	{!! Form::close() !!}
 										</td>
-										@endif
 									</tr>
 								@endforeach
 							</tbody>
 						</table>
-					</div>
-					{{ $receptions->render() }}
+					</div>	
+					{{ $users->render() }}
 				</div>
 			</div>
 		</div>

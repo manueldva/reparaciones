@@ -8,9 +8,11 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Lista de Clientes</strong> 
+					@if(Auth::user()->status !== 'READONLY')
 					<a href="{{ route('clients.create')}}" class="btn btn-sm btn-primary pull-right">
 						Crear
 					</a>
+					@endif
 				</div>
 		
 
@@ -38,6 +40,7 @@
 												Ver
 											</a>
 										</td>
+										@if(Auth::user()->status !== 'READONLY')
 										<td width="10px">
 											<a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-default">
 												Editar
@@ -51,6 +54,7 @@
 	                                        	</button>                           
 	                                    	{!! Form::close() !!}
 										</td>
+										@endif
 									</tr>
 								@endforeach
 							</tbody>
