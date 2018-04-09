@@ -30,6 +30,16 @@ class ManageuserController extends Controller
     {
        $users = User::orderBy('id', 'DESC')->paginate();
 
+       foreach ($users as $user) {
+           if ($user->status == 'ADMINISTRATOR') {
+                $user->status = 'Administrador';
+           }elseif ($user->status == 'READONLY') {
+                $user->status = 'Solo Lectura';
+           }else {
+                $user->status = 'Gestiòn';
+           }
+       }
+
        return view('admin.manageusers.index', compact('users'));
     }
 
