@@ -18,7 +18,7 @@
 						{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
 						
 						<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
-						@if(Auth::user()->status !== 'READONLY')
+						@if(Auth::user()->userType !== 'READONLY')
 						<a href="{{ route('deliveries.create')}}" class="btn btn-sm btn-primary">
 							<span class="glyphicon glyphicon-plus"></span> Crear
 						</a>	
@@ -58,7 +58,7 @@
 												Ver
 											</a>
 										</td>
-										@if(Auth::user()->status !== 'READONLY')
+										@if(Auth::user()->userType !== 'READONLY')
 										<td width="10px">
 											<a href="{{ route('deliveries.edit', $delivery->id) }}" class="btn btn-sm btn-default">
 												Editar

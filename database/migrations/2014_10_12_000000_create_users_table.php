@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username', 128)->unique();
             $table->string('email',128)->unique();
             $table->string('password')->default('123456');
-            $table->enum('status',['ADMINISTRATOR', 'MANAGMENT ', 'READONLY'])->default('READONLY');
+            $table->enum('userType',['ADMINISTRATOR', 'MANAGMENT ', 'READONLY'])->default('READONLY');
             $table->string('file', 128)->nullable();
             $table->rememberToken();
             $table->timestamps();

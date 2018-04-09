@@ -75,7 +75,7 @@
                                 </ul>
                                 
                             </li>
-                            @if(Auth::user()->status == 'ADMINISTRATOR')
+                            @if(Auth::user()->userType == 'ADMINISTRATOR')
                             <li>
                                 <a id="users" href="{{ route('manageusers.index') }}">Usuarios </a>
                             </li>

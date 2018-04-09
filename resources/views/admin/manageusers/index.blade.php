@@ -22,7 +22,7 @@
 									<th width="10px"> ID</th>
 									<th> Nombre</th>
 									<th> Usuario</th>
-									<th> Estado</th>
+									<th> Tipo Usuario</th>
 									<th colspan="3">&nbsp;</th>
 								</tr>
 							</thead>
@@ -32,7 +32,7 @@
 										<td>{{ $user->id }}</td>
 										<td>{{ $user->name }}</td>
 										<td>{{ $user->username }}</td>
-										<td>{{ $user->status }}</td>
+										<td>{{ $user->userType }}</td>
 										<td width="10px">
 											<a href="{{ route('manageusers.show', $user->id) }}" class="btn btn-sm btn-default">
 												Ver

@@ -20,15 +20,15 @@
 
 
 <div class="form-group">
-	{{ form::label('status', 'Estado:') }}
+	{{ form::label('userType', 'Tipo Usuario:') }}
 	<label>
-		{{ Form::radio('status','ADMINISTRATOR')}} Administrador
+		{{ Form::radio('userType','ADMINISTRATOR')}} Administrador
 	</label>
 	<label>
-		{{ Form::radio('status','MANAGMENT')}} Gestiòn
+		{{ Form::radio('userType','MANAGMENT')}} Gestiòn
 	</label>
 	<label>
-		{{ Form::radio('status','READONLY')}} Solo Lectura
+		{{ Form::radio('userType','READONLY')}} Solo Lectura
 	</label>
 </div>
 

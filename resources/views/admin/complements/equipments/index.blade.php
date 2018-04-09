@@ -8,7 +8,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Lista de Equipos</strong> 
-					@if(Auth::user()->status !== 'READONLY')
+					@if(Auth::user()->userType !== 'READONLY')
 					<a href="{{ route('equipments.create')}}" class="btn btn-sm btn-primary pull-right">
 						Crear
 					</a>
@@ -37,7 +37,7 @@
 												Ver
 											</a>
 										</td>
-										@if(Auth::user()->status !== 'READONLY')
+										@if(Auth::user()->userType !== 'READONLY')
 										<td width="10px">
 											<a href="{{ route('equipments.edit', $equipment->id) }}" class="btn btn-sm btn-default">
 												Editar
