@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ReasonStoreRequest;
 use App\Http\Requests\ReasonUpdateRequest;
+use Alert;
 
 use App\Reason;
 use App\Reception;
@@ -50,7 +51,11 @@ class ReasonController extends Controller
     {
         $reason = Reason::create($request->all());
 
-        return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon creada con exito');
+
+        Alert::success('Razon creada con exito');
+        return redirect()->route('reasons.edit', $reason->id);
+
+        //return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon creada con exito');
     }
 
     /**
@@ -93,8 +98,8 @@ class ReasonController extends Controller
         $reason->fill($request->all())->save();
 
         //return redirect()->route('admin.complements.equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
-
-        return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon actualizada con exito');
+        Alert::success('Razon actualizada con exito');
+        return redirect()->route('reasons.edit', $reason->id);
     }
 
     /**
@@ -108,11 +113,13 @@ class ReasonController extends Controller
         
         if(Reception::where('reason_id', $id)->first()) 
         {
-            return back()->with('danger', 'No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro');
+            return back();
         }
 
         Reason::find($id)->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        Alert::success('Eliminado correctamente');
+        return back();
     }
 }

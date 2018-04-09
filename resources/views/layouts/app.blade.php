@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/resources/sweetalert.css') }}">
 </head>
 <body>
     <div id="app">
@@ -120,6 +121,8 @@
                 </div>
             </div>
         </nav>
+
+
         
         @if(session('info'))
             <div class="container">
@@ -168,6 +171,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script src="{{ asset('js/resources/sweetalert.js') }}"></script>
+
+    @include('sweet::alert')
+
+    
+
     <script type="text/javascript">    
         var pathname = window.location.pathname;
         //alert(pathname);
@@ -203,6 +213,9 @@
         }
 
     </script>
+
+
+
     @yield('scripts')
 </body>
 </html>

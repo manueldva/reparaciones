@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ReceptionStoreRequest;
 use App\Http\Requests\ReceptionUpdateRequest;
 use Illuminate\Support\Facades\Storage;
+use Alert;
 
 use App\Delivery;
 use App\Reception;
@@ -66,8 +67,8 @@ class ReceptionController extends Controller
             $reception->fill(['file' => asset($path)])->save();
         }
 
-
-        return redirect()->route('receptions.edit', $reception->id)->with('info', 'Recepción creada con exito');
+        Alert::success('Recepción creada con exito');
+        return redirect()->route('receptions.edit', $reception->id);
     }
 
     /**
@@ -119,7 +120,8 @@ class ReceptionController extends Controller
             $reception->fill(['file' => asset($path)])->save();
         }
 
-        return redirect()->route('receptions.edit', $reception->id)->with('info', 'Recepción actualizada con exito');
+        Alert::success('Recepción actualizada con exito');
+        return redirect()->route('receptions.edit', $reception->id);
     }
 
     /**
@@ -133,11 +135,13 @@ class ReceptionController extends Controller
         
         if(Delivery::where('reception_id', $id)->first()) 
         {
-            return back()->with('danger', 'No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro');
+            return back();
         }
 
         Reception::find($id)->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        Alert::success('Eliminado correctamente');
+        return back();
     }
 }

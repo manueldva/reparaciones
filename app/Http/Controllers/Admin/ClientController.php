@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ClientStoreRequest;
 use App\Http\Requests\ClientUpdateRequest;
+use Alert;
 
 use App\Http\Controllers\Controller;
 use App\Client;
@@ -49,8 +50,8 @@ class ClientController extends Controller
     public function store(ClientStoreRequest $request)
     {
         $clients = Client::create($request->all());
-
-        return redirect()->route('clients.edit', $clients->id)->with('info', 'Cliente creado con exito');
+        Alert::success('Cliente creado con exito');
+        return redirect()->route('clients.edit', $clients->id);
     }
 
     /**
@@ -92,7 +93,8 @@ class ClientController extends Controller
 
         $client->fill($request->all())->save();
 
-        return redirect()->route('clients.edit', $client->id)->with('info', 'Cliente actualizado con exito');
+        Alert::success('Cliente actualizado con exito');
+        return redirect()->route('clients.edit', $client->id);
     }
 
     /**
@@ -106,11 +108,13 @@ class ClientController extends Controller
         
         if(Reception::where('client_id', $id)->first()) 
         {
-            return back()->with('danger', 'No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro');
+            return back();
         }
 
         Client::find($id)->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        Alert::success('Eliminado correctamente');
+        return back();
     }
 }

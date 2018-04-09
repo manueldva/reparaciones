@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\EquipmentStoreRequest;
 use App\Http\Requests\EquipmentUpdateRequest;
+use Alert;
 
 use App\Equipment;
 use App\Reception;
@@ -50,7 +51,8 @@ class EquipmentController extends Controller
     {
         $equipment = Equipment::create($request->all());
 
-        return redirect()->route('equipments.edit', $equipment->id)->with('info', 'Equipo creado con exito');
+        Alert::success('Equipo creado con exito');
+        return redirect()->route('equipments.edit', $equipment->id);
     }
 
     /**
@@ -93,8 +95,8 @@ class EquipmentController extends Controller
         $equipment->fill($request->all())->save();
 
         //return redirect()->route('admin.complements.equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
-
-        return redirect()->route('equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
+        Alert::success('Equipo actualizado con exito');
+        return redirect()->route('equipments.edit', $equipment->id);
     }
 
     /**
@@ -108,11 +110,13 @@ class EquipmentController extends Controller
         
         if(Reception::where('equipment_id', $id)->first()) 
         {
-            return back()->with('danger', 'No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro');
+            return back();
         }
 
         Equipment::find($id)->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        Alert::success('Eliminado correctamente');
+        return back();
     }
 }

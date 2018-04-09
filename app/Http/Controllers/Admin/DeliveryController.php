@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\FechaHelper;
 use Barryvdh\DomPDF\Facade as PDF;
+use Alert;
 
 use App\Http\Requests\DeliveryStoreRequest;
 use App\Http\Requests\DeliveryUpdateRequest;
@@ -73,7 +74,8 @@ class DeliveryController extends Controller
             $reception->status = 'REPAIRING';
         $reception->save();
 
-        return redirect()->route('deliveries.edit', $delivery->id)->with('info', 'Entrega creada con exito');
+        Alert::success('Entrega creada con exito');
+        return redirect()->route('deliveries.edit', $delivery->id);
     }
 
     /**
@@ -128,7 +130,8 @@ class DeliveryController extends Controller
 
         $delivery->fill($request->all())->save();
 
-        return redirect()->route('deliveries.edit', $delivery->id)->with('info', 'Entrega actualizada con exito');
+        Alert::success('Entrega actualizada con exito');
+        return redirect()->route('deliveries.edit', $delivery->id);
     }
 
     /**
@@ -147,7 +150,8 @@ class DeliveryController extends Controller
 
         $delivery->delete();
 
-        return back()->with('info', 'Eliminado correctamente');
+        Alert::success('Eliminado correctamente');
+        return back();
     }
 
 
