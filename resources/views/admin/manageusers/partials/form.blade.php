@@ -13,10 +13,6 @@
 	{{ form::email('email', null, ['class' => 'form-control', 'id' => 'email']) }}
 </div>
 
-<div class="form-group">
-    {{ Form::label('image', 'Imagen') }}
-    {{ Form::file('image') }}
-</div>
 
 
 <div class="form-group">
