@@ -40,18 +40,18 @@
 
 
 						<div class="form-group">
-                            <label for="userType">Contraseña</label>
+                            <label for="userType">Tipo Usuario:</label>
                             <input id="userType" type="text" class="form-control" name="userType" value= "{{ trans("resource.$user->userType") }}" disabled>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="password">Contraseña</label>
+                            <label for="password">Contraseña:</label>
                             <input id="password" type="password" class="form-control" name="password">
                         </div>
 
                         <div class="form-group">
-                            <label for="password2">Contraseña</label>
+                            <label for="password2">Contraseña:</label>
                             <input id="password2" type="password" class="form-control" name="password2">
                         </div>
 
