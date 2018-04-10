@@ -32,7 +32,7 @@
 										<td>{{ $user->id }}</td>
 										<td>{{ $user->name }}</td>
 										<td>{{ $user->username }}</td>
-										<td>{{ $user->userType }}</td>
+										<td>{{ trans("resource.$user->userType") }}</td>
 										<td width="10px">
 											<a href="{{ route('manageusers.show', $user->id) }}" class="btn btn-sm btn-default">
 												Ver

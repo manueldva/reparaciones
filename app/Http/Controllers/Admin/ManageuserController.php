@@ -28,17 +28,7 @@ class ManageuserController extends Controller
      */
     public function index()
     {
-       $users = User::orderBy('id', 'DESC')->paginate();
-
-       foreach ($users as $user) {
-           if ($user->status == 'ADMINISTRATOR') {
-                $user->status = 'Administrador';
-           }elseif ($user->status == 'READONLY') {
-                $user->status = 'Solo Lectura';
-           }else {
-                $user->status = 'Gestiòn';
-           }
-       }
+       $users = User::where('username','!=','admin')->orderBy('id', 'DESC')->paginate();
 
        return view('admin.manageusers.index', compact('users'));
     }
@@ -202,9 +192,65 @@ class ManageuserController extends Controller
     public function destroy($id)
     {
         
+
         User::find($id)->delete();
 
         Alert::success('Eliminado correctamente');
         return back();
+    }
+
+
+    public function showSetting($id)
+    {
+
+        $user = User::find($id);
+
+        //return $user;
+        return view('admin.manageusers.setting', compact('user'));
+    }
+
+
+    public function setting(Request $request, $id)
+    {
+
+        //return $request->input('password2');
+        if ($request->input('password') !== $request->input('password2')){
+            return back()->with('danger', 'Las contraseñas deben coincidir')->withInput();
+        }
+
+        
+
+        if($request->file('image')){
+
+            $input  = array('image' => $request->file('image'));
+
+            $rules = array('image' => 'mimes:jpg,jpeg,png');
+
+            $validator = Validator::make($input,  $rules);
+
+            if ($validator->fails())
+            {
+                return back()->with('danger', 'La imagen no posee un formato valido')->withInput();
+            }
+        } 
+
+
+        // contraseña
+        $user = User::find($id);
+
+        if ($request->input('password') !== '' && $request->input('password2') !== ''){
+            $user->fill(['password' => bcrypt($request->input('password2'))])->save();
+        }  
+
+         //IMAGE 
+        if($request->file('image')){
+            $path = Storage::disk('public')->put('image',  $request->file('image'));
+            $user->fill(['file' => asset($path)])->save();
+        }
+
+
+        Alert::success('Usuario actualizado con exito');
+        return view('admin.manageusers.setting', compact('user'));
+
     }
 }

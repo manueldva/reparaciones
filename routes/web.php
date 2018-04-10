@@ -37,6 +37,8 @@ route::resource('reasons', 		'Admin\ReasonController');
 
 	//para manejar tipos de usuarios mas adelante
 route::resource('manageusers', 		'Admin\ManageuserController');
+route::get('/showSetting/{id}',		'Admin\ManageuserController@showSetting')->name('showSetting');
+route::put('/setting/{id}',		'Admin\ManageuserController@setting')->name('setting');
 
 
 //

@@ -17,7 +17,8 @@
 
 					<p> <strong>Usuario:</strong> {{ $user->username }}</p>
 
-					<p> <strong>Estado:</strong> {{ $user->status }}</p>
+					<p> <strong>Tipo Usuario:</strong> {{ trans("resource.$user->userType") }}</p>
+					
 
 					@if($user->file)
 					<p> <strong>Imagen:</strong></p>
