@@ -69,19 +69,6 @@ class ManageuserController extends Controller
             return back()->with('danger', 'Este email ya esta en uso')->withInput();
         }
 
-        /*if($request->file('image')){
-
-            $input  = array('image' => $request->file('image'));
-
-            $rules = array('image' => 'mimes:jpg,jpeg,png');
-
-            $validator = Validator::make($input,  $rules);
-
-            if ($validator->fails())
-            {
-                return back()->with('danger', 'La imagen no posee un formato valido')->withInput();
-            }
-        } */  
 
 
         $user = User::create($request->all());
@@ -89,12 +76,6 @@ class ManageuserController extends Controller
 
         $user->password = bcrypt('123456');
         $user->save();
-
-          //IMAGE 
-        /*if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $user->fill(['file' => asset($path)])->save();
-        }*/
 
         Alert::success('Usuario creado con exito');
         return redirect()->route('manageusers.edit', $user->id);
@@ -153,31 +134,11 @@ class ManageuserController extends Controller
             return back()->with('danger', 'Este email ya esta en uso')->withInput();
         }
 
-        /*if($request->file('image')){
-
-            $input  = array('image' => $request->file('image'));
-
-            $rules = array('image' => 'mimes:jpg,jpeg,png');
-
-            $validator = Validator::make($input,  $rules);
-
-            if ($validator->fails())
-            {
-                return back()->with('danger', 'La imagen no posee un formato valido')->withInput();
-            }
-        }
-        */
 
         $user = User::find($id);
 
         $user->fill($request->all())->save();
 
-         /*
-         //IMAGE 
-        if($request->file('image')){
-            $path = Storage::disk('public')->put('image',  $request->file('image'));
-            $user->fill(['file' => asset($path)])->save();
-        }*/
 
         Alert::success('Usuario actualizado con exito');
         return redirect()->route('manageusers.edit', $user->id);
@@ -213,7 +174,6 @@ class ManageuserController extends Controller
     public function setting(Request $request, $id)
     {
 
-        //return $request->input('password2');
         if ($request->input('password') !== $request->input('password2')){
             return back()->with('danger', 'Las contraseñas deben coincidir')->withInput();
         }

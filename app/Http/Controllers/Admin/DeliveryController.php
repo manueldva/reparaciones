@@ -28,9 +28,16 @@ class DeliveryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $deliveries = Delivery::orderBy('id', 'DESC')->paginate();
+       
+        $deliveries = Delivery::type($request->get('type'), $request->get('val'))->orderBy('id', 'desc')->paginate(2);
+        $deliveries->setPath('deliveries');
+
+       //$deliveries = Delivery::orderBy('id', 'DESC')->paginate(2);
+
+
+
 
        foreach ($deliveries as $delivery) {
            $delivery->deliverDate = FechaHelper::getFechaImpresion($delivery->deliverDate); 

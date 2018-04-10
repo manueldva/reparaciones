@@ -78,7 +78,8 @@
 							</tbody>
 						</table>
 					</div>	
-					{{ $deliveries->render() }}
+					
+					{{ $deliveries->appends(Request::only(['type', 'val']))->render() }}
 				</div>
 			</div>
 		</div>
@@ -90,6 +91,42 @@
 
 @section('scripts')
 	<script type="text/javascript">
+
+		var type = $('#type').val();
+		if (type == 'date'){
+			$('#val').attr('type','date');
+			$('#val').focus();
+		} else if (type == 'id')
+		{
+			$('#val').attr('type','number');
+			$('#val').focus();
+		} else
+		{
+			$('#val').attr('type','text');
+			$('#val').focus();
+		}
+
+
+		$('#type').change(function(e) {
+	
+			var type = $('#type').val();
+			if (type == 'date'){
+				$('#val').attr('type','date');
+				$('#val').val('');
+				$('#val').focus();
+			} else if (type == 'id')
+			{
+				$('#val').attr('type','number');
+				$('#val').val('');
+				$('#val').focus();
+			} else
+			{
+				$('#val').attr('type','text');
+				$('#val').val('');
+				$('#val').focus();
+			}
+		});
+
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
 	</script>
 @endsection
