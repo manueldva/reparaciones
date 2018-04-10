@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password2">Contraseña:</label>
+                            <label for="password2">Confirmar Contraseña:</label>
                             <input id="password2" type="password" class="form-control" name="password2">
                         </div>
 
