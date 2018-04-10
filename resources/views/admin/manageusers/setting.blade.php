@@ -13,15 +13,16 @@
 				<div class="panel-body">
 					{!! Form::model($user, ['route' => ['setting', $user->id], 'method' => 'PUT', 'files' => true]) !!}
 
-						
-                        <div class="form-group">
-                        	@if($user->file)
+						@if($user->file)
+	                        <div class="form-group">
 								<p> <strong>Imagen:</strong></p>
-		                        <img src="{{ $user->file }}" class="img-responsive" height="200" width="200">
-		                    @endif
-						    {{ Form::file('image') }}
-						</div>
+			                    <img src="{{ $user->file }}" height="200" width="200" class="img-circle profile_img">
+							</div>
+						@endif
 
+						<div class="form-group">
+							{{ Form::file('image') }}
+						</div>
 
 						<div class="form-group">
 							{{ form::label('name', 'nombre:') }}
