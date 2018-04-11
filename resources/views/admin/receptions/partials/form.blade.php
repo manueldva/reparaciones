@@ -1,6 +1,6 @@
 <div class="form-group">
 	{{ form::label('client_id', 'Cliente:') }}
-	{{ form::select('client_id', $clients, null, ['class' => 'form-control'] ) }}
+	{{ form::select('client_id', $clients, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar...' ] ) }}
 </div>
 
 <div class="form-group">
@@ -20,7 +20,7 @@
 
 <div class="form-group">
 	{{ form::label('reason_id', 'Razon:') }}
-	{{ form::select('reason_id', $reasons, null, ['class' => 'form-control'] ) }}
+	{{ form::select('reason_id', $reasons, null, ['class' => 'form-control','placeholder' => 'Seleccionar...'] ) }}
 </div>
 
 <div class="form-group">

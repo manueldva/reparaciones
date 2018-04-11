@@ -37,7 +37,7 @@
 										<td>{{ $reception->client->name }}</td>
 										<td>{{ $reception->equipment->description }}</td>
 										<td>{{ $reception->reason->description }}</td>
-										<td> <font color="red">{{trans("resource.$reception->status") }}</font></td>
+										<td> <font color="{{trans("color.$reception->status") }}">{{trans("resource.$reception->status") }}</font></td>
 										<td width="10px">
 											<a href="{{ route('receptions.show', $reception->id) }}" class="btn btn-sm btn-default">
 												Ver
