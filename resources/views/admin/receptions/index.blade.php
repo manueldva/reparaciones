@@ -26,6 +26,7 @@
 									<th> Cliente</th>
 									<th> Equipo</th>
 									<th> Motivo</th>
+									<th> Estado</th>
 									<th colspan="3">&nbsp;</th>
 								</tr>
 							</thead>
@@ -36,6 +37,7 @@
 										<td>{{ $reception->client->name }}</td>
 										<td>{{ $reception->equipment->description }}</td>
 										<td>{{ $reception->reason->description }}</td>
+										<td> <font color="red">{{trans("resource.$reception->status") }}</font></td>
 										<td width="10px">
 											<a href="{{ route('receptions.show', $reception->id) }}" class="btn btn-sm btn-default">
 												Ver
