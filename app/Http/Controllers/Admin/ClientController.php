@@ -24,9 +24,12 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $clients = Client::orderBy('id', 'DESC')->paginate();
+       //$clients = Client::orderBy('id', 'DESC')->paginate();
+
+        $clients = Client::type($request->get('type'), $request->get('val'))->paginate(10);
+        $clients->setPath('clients');
 
        return view('admin.clients.index', compact('clients'));
     }

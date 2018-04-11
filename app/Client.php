@@ -15,4 +15,24 @@ class Client extends Model
     public function receptions(){
     	return $this->HasMany(Reception::class);
     }
+
+
+
+    public function scopeType($query, $type, $valor) 
+    {
+		
+		if ($type == 'address')
+        {
+            $query->where('address', 'like', '%' . $valor . '%')->orderBy('id', 'DESC');
+        } else if ($type == 'client') 
+        {
+			//$query->where('id', $valor)->orderBy('id', 'ASC');
+    		$query->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'DESC');
+			//$query->client()->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'ASC');
+
+        } else
+        {
+            $query;
+        }
+    }
 }

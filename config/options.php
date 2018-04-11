@@ -16,7 +16,14 @@ return array(
 		'client'    => 'Cliente',
 		'id'  		=> 'Codigo'/*,
 		'status'	=> 'Estado'*/
-	] 
+	],
+
+	'clienttypes' => [
+		''    		=> 'Seleccionar',
+		'client'    => 'Cliente',
+		'address'	=> 'Dirección'/*,
+		'status'	=> 'Estado'*/
+	]  
 
 
 

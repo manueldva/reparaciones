@@ -8,11 +8,26 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Lista de Clientes</strong> 
-					@if(Auth::user()->userType !== 'READONLY')
-					<a href="{{ route('clients.create')}}" class="btn btn-sm btn-primary pull-right">
-						Crear
-					</a>
-					@endif
+					<form class="navbar-form navbar-right" role="search">
+					
+						{{ Form::model(Request::only('type', 'val'), array('route' => 'clients.index', 'method' => 'GET'), array('role' => 'form', 'class' => 'navbar-form pull-right')) }}
+						<div class="form-group">
+							{{ form::label('buscar', 'Tipo Busqueda:') }}
+							{{ form::select('type', config('options.clienttypes'), null, ['class' => 'form-control', 'id' => 'type'] ) }}
+							{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
+							
+							<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+							@if(Auth::user()->userType !== 'READONLY')
+							<a href="{{ route('clients.create')}}" class="btn btn-sm btn-primary">
+								<span class="glyphicon glyphicon-plus"></span> Crear
+							</a>	
+							@endif
+						</div>
+						
+						{{ Form::close() }}
+					</form>
+					<br>
+					<br>
 				</div>
 		
 
@@ -60,7 +75,7 @@
 							</tbody>
 						</table>
 					</div>	
-					{{ $clients->render() }}
+					{{ $clients->appends(Request::only(['type', 'val']))->render() }}
 				</div>
 			</div>
 		</div>
@@ -72,6 +87,13 @@
 
 @section('scripts')
 	<script type="text/javascript">
+
+		$('#type').change(function(e) {
+
+			$('#val').val('');
+			$('#val').focus();
+	
+		});
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
 	</script>
 @endsection

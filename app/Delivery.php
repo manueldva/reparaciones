@@ -21,10 +21,10 @@ class Delivery extends Model
 	public function scopeType($query, $type, $valor) 
     {
         if ($type == 'date'){
-            $query->where('deliverDate', $valor)->orderBy('id', 'ASC');
+            $query->where('deliverDate', $valor)->orderBy('id', 'DESC');
         } else if ($type == 'id')
         {
-            $query->where('id', $valor)->orderBy('id', 'ASC');
+            $query->where('id', $valor)->orderBy('id', 'DESC');
         } else if ($type == 'client') 
         {
 			$query->whereHas('reception', function ($receptions) use($valor) {
