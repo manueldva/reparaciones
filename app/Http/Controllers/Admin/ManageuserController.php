@@ -198,7 +198,7 @@ class ManageuserController extends Controller
         // contraseña
         $user = User::find($id);
 
-        if ($request->input('password') !== '' && $request->input('password2') !== ''){
+        if ($request->input('password2')){
             $user->fill(['password' => bcrypt($request->input('password2'))])->save();
         }  
 

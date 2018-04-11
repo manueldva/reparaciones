@@ -31,7 +31,7 @@ class DeliveryController extends Controller
     public function index(Request $request)
     {
        
-        $deliveries = Delivery::type($request->get('type'), $request->get('val'))->orderBy('id', 'desc')->paginate(2);
+        $deliveries = Delivery::type($request->get('type'), $request->get('val'))->orderBy('id', 'desc')->paginate(10);
         $deliveries->setPath('deliveries');
 
        //$deliveries = Delivery::orderBy('id', 'DESC')->paginate(2);
