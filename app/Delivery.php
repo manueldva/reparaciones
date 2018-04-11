@@ -27,16 +27,11 @@ class Delivery extends Model
             $query->where('id', $valor)->orderBy('id', 'ASC');
         } else if ($type == 'client') 
         {
-        	$query->select('*')
-			->from('deliveries as d')
-			->join('receptions as r', function($join) {
-				$join->on('d.reception_id', '=', 'r.id');
-				})
-			->join('clients as c', function($join) {
-				$join->on('r.client_id', '=', 'c.id');
-				})
-			->where('c.name', 'like', '%' . $valor . '%')
-			->orderBy('d.id', 'ASC');
+			$query->whereHas('reception', function ($receptions) use($valor) {
+				$receptions->whereHas('client', function ($clients) use($valor) {
+    				$clients->where('name', 'like', '%' . $valor . '%');
+    			})->orderBy('id', 'DESC');
+			})->orderBy('id', 'DESC');
         } else
         {
             $query;

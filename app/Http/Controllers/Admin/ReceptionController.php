@@ -29,9 +29,15 @@ class ReceptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $receptions = Reception::orderBy('id', 'DESC')->paginate();
+       //$receptions = Reception::orderBy('id', 'DESC')->paginate();
+
+        $receptions = Reception::type($request->get('type'), $request->get('val'))->paginate(10);
+        $receptions->setPath('receptions');
+
+        //return $receptions;
+
 
        return view('admin.receptions.index', compact('receptions'));
     }

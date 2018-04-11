@@ -8,11 +8,26 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Lista de Recepciones</strong> 
-					@if(Auth::user()->userType !== 'READONLY')
-					<a href="{{ route('receptions.create')}}" class="btn btn-sm btn-primary pull-right">
-						Crear
-					</a>
-					@endif
+					<form class="navbar-form navbar-right" role="search">
+					
+						{{ Form::model(Request::only('type', 'val'), array('route' => 'receptions.index', 'method' => 'GET'), array('role' => 'form', 'class' => 'navbar-form pull-right')) }}
+						<div class="form-group">
+							{{ form::label('buscar', 'Tipo Busqueda:') }}
+							{{ form::select('type', config('options.receptiontypes'), null, ['class' => 'form-control', 'id' => 'type'] ) }}
+							{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
+							
+							<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+							@if(Auth::user()->userType !== 'READONLY')
+							<a href="{{ route('receptions.create')}}" class="btn btn-sm btn-primary">
+								<span class="glyphicon glyphicon-plus"></span> Crear
+							</a>	
+							@endif
+						</div>
+						
+						{{ Form::close() }}
+					</form>
+				<br>
+				<br>	
 				</div>
 		
 
@@ -63,7 +78,8 @@
 							</tbody>
 						</table>
 					</div>
-					{{ $receptions->render() }}
+					{{ $receptions->appends(Request::only(['type', 'val']))->render() }}
+					
 				</div>
 			</div>
 		</div>
@@ -75,6 +91,37 @@
 
 @section('scripts')
 	<script type="text/javascript">
-		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
+
+
+	var type = $('#type').val();
+	if (type == 'id')
+	{
+		$('#val').attr('type','number');
+		$('#val').focus();
+	} else
+	{
+		$('#val').attr('type','text');
+		$('#val').focus();
+	}
+
+
+	$('#type').change(function(e) {
+
+		var type = $('#type').val();
+		if (type == 'id')
+		{
+			$('#val').attr('type','number');
+			$('#val').val('');
+			$('#val').focus();
+		} else
+		{
+			$('#val').attr('type','text');
+			$('#val').val('');
+			$('#val').focus();
+		}
+	});
+
+
+	$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
 	</script>
 @endsection

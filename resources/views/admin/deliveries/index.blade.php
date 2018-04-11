@@ -10,23 +10,23 @@
 					<strong>Lista de Entregas</strong> 
 					
 					<form class="navbar-form navbar-right" role="search">
-					
-					{{ Form::model(Request::only('type', 'val'), array('route' => 'deliveries.index', 'method' => 'GET'), array('role' => 'form', 'class' => 'navbar-form pull-right')) }}
-					<div class="form-group">
-						{{ form::label('buscar', 'Tipo Busqueda:') }}
-						{{ form::select('type', config('options.types'), null, ['class' => 'form-control', 'id' => 'type'] ) }}
-						{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
 						
-						<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
-						@if(Auth::user()->userType !== 'READONLY')
-						<a href="{{ route('deliveries.create')}}" class="btn btn-sm btn-primary">
-							<span class="glyphicon glyphicon-plus"></span> Crear
-						</a>	
-						@endif
-					</div>
-					
-					{{ Form::close() }}
-				</form>
+						{{ Form::model(Request::only('type', 'val'), array('route' => 'deliveries.index', 'method' => 'GET'), array('role' => 'form', 'class' => 'navbar-form pull-right')) }}
+						<div class="form-group">
+							{{ form::label('buscar', 'Tipo Busqueda:') }}
+							{{ form::select('type', config('options.deliverytypes'), null, ['class' => 'form-control', 'id' => 'type'] ) }}
+							{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
+							
+							<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+							@if(Auth::user()->userType !== 'READONLY')
+							<a href="{{ route('deliveries.create')}}" class="btn btn-sm btn-primary">
+								<span class="glyphicon glyphicon-plus"></span> Crear
+							</a>	
+							@endif
+						</div>
+						
+						{{ Form::close() }}
+					</form>
 				<br>
 				<br>	
 					

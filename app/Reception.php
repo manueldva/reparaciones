@@ -32,4 +32,24 @@ class Reception extends Model
     public function deliveries(){
     	return $this->HasMany(Delivery::class);
     }
+
+    public function scopeType($query, $type, $valor) 
+    {
+		
+		if ($type == 'id')
+        {
+            $query->where('id', $valor)->orderBy('id', 'ASC');
+        } else if ($type == 'client') 
+        {
+			$query->whereHas('client', function ($clients) use($valor) {
+    			$clients->where('name', 'like', '%' . $valor . '%');
+			})->orderBy('id', 'DESC');
+			//$query->client()->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'ASC');
+
+        } else
+        {
+            $query;
+        }
+    }
+
 }

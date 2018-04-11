@@ -3,11 +3,19 @@
 
 return array(
 
-	'types' => [
-		'' 			=> 'Seleccionar',
-		'date'		=> 'Fecha',
+	'deliverytypes' => [
+		''    		=> 'Seleccionar',
 		'client'    => 'Cliente',
-		'id'  		=> 'Codigo'
+		'id'  		=> 'Codigo',
+		'date'		=> 'Fecha'
+	],
+
+
+	'receptiontypes' => [
+		''    		=> 'Seleccionar',
+		'client'    => 'Cliente',
+		'id'  		=> 'Codigo'/*,
+		'status'	=> 'Estado'*/
 	] 
 
 
