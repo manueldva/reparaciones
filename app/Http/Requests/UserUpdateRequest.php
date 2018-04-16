@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeliveryUpdateRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,10 @@ class DeliveryUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        
         return [
-            'reception_id'      => 'required|unique:deliveries,reception_id,' . $this->delivery,
-            'deliverDate'       => 'required|date',
-            'workPrice'         => 'required',
-            'workDone'          => 'required'
+            'name'      => 'required',
+            'username'  => 'required|unique:users,username,' . $this->user,
+            'email'     => 'required|unique:users,email,'. $this->user
         ];
     }
 }

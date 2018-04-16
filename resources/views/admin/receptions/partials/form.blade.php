@@ -9,12 +9,12 @@
 </div>
 
 <div class="form-group">
-	{{ form::label('description', 'Descripcion') }}
+	{{ form::label('description', 'Descripcion:') }}
 	{{ form::textarea('description', null, ['class' => 'form-control']) }}
 </div>
 
 <div class="form-group">
-    {{ Form::label('image', 'Imagen') }}
+    {{ Form::label('image', 'Imagen:') }}
     {{ Form::file('image') }}
 </div>
 

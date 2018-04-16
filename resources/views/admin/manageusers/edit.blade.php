@@ -11,8 +11,8 @@
 				</div>
 		
 				<div class="panel-body">
-					
-					{!! Form::model($user, ['route' => ['manageusers.update', $user->id], 'method' => 'PUT', 'files' => true]) !!}
+
+					{!! Form::model($user, ['route' => ['manageusers.update', $user->id], 'method' => 'PUT']) !!}
                         
                         @include('admin.manageusers.partials.form')
 

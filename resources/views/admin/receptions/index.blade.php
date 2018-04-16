@@ -92,34 +92,25 @@
 @section('scripts')
 	<script type="text/javascript">
 
-
-	var type = $('#type').val();
-	if (type == 'id')
-	{
-		$('#val').attr('type','number');
-		$('#val').focus();
-	} else
-	{
-		$('#val').attr('type','text');
-		$('#val').focus();
-	}
-
-
-	$('#type').change(function(e) {
-
-		var type = $('#type').val();
-		if (type == 'id')
-		{
-			$('#val').attr('type','number');
-			$('#val').val('');
-			$('#val').focus();
-		} else
-		{
-			$('#val').attr('type','text');
-			$('#val').val('');
-			$('#val').focus();
+		function searchType(){ 
+		    var type = $('#type').val();
+			if (type == 'id')
+			{
+				$('#val').attr('type','number');
+				$('#val').focus();
+			} else
+			{
+				$('#val').attr('type','text');
+				$('#val').focus();
+			}
 		}
-	});
+
+		searchType(); 
+		
+
+		$('#type').change(function(e) {
+			searchType(); 
+		});
 
 
 	$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 

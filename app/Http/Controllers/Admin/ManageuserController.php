@@ -49,10 +49,10 @@ class ManageuserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         
-        if ($request->input('name') == ''  || $request->input('username') == '' || $request->input('email') == '') 
+       /* if ($request->input('name') == ''  || $request->input('username') == '' || $request->input('email') == '') 
         {
             //Alert::error('Faltas datos para dar de alta el Usuario');
             return back()->with('danger', 'Complete todos los datos del usuario')->withInput();
@@ -68,7 +68,7 @@ class ManageuserController extends Controller
         {
             return back()->with('danger', 'Este email ya esta en uso')->withInput();
         }
-
+    */
 
 
         $user = User::create($request->all());
@@ -133,7 +133,7 @@ class ManageuserController extends Controller
         {
             return back()->with('danger', 'Este email ya esta en uso')->withInput();
         }
-
+    
 
         $user = User::find($id);
 
