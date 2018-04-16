@@ -1,6 +1,7 @@
+
 <div class="form-group">
 	{{ form::label('client_id', 'Cliente:') }}
-	{{ form::select('client_id', $clients, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar...' ] ) }}
+	{{ form::select('client_id', $clients, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar...', 'id' => 'client_id' ] ) }}
 </div>
 
 <div class="form-group">
@@ -57,9 +58,17 @@
 	<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 </div>
 
+@section('js')
+<script src="{{ asset('js/resources/select2.js') }}"></script>
+@endsection
 
 @section('scripts')
 	<script type="text/javascript">
+
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
+
+		
+		$('#client_id').select2();
+
 	</script>
 @endsection

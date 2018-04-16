@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/resources/sweetalert.css') }}">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -156,6 +157,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    @yield('js')
+
 
     <script src="{{ asset('js/resources/sweetalert.js') }}"></script>
 
