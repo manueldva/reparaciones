@@ -1,1 +1,61 @@
 https://fuubar.wordpress.com/2013/06/04/remover-segmento-public-de-la-url-en-laravel/
+
+
+Como ejemplo nuestro proyecto en laravel se llama "gym"
+
+Paso 1
+
+copiar carpeta public fuera del proyecto (como un proyecto independiente) y asignarle un nombre diferente. ejemplo "public_gym"
+
+Paso 2
+
+ingresar al archivo index de la nueva carpeta (public_gym) y sustituir lo las siguientes lineas:
+
+require __DIR__.'/../vendor/autoload.php';
+
+Por:
+
+require __DIR__.'/../gym/vendor/autoload.php'; // teniendo en cuenta que "gym" es la carpeta original del proyecto de donde sacamos la carpeta public que ahora se llama "public_gym"
+
+
+y:
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+Por:
+
+$app = require_once __DIR__.'/../gym/bootstrap/app.php';
+
+
+Paso 3
+
+ingresamos a la carpeta bootstrap dentro del proyecto original ("gym" en este ejemplo) y modificamos el archivo app.php con lo siguiente:
+
+modificamos:
+
+
+$app = new Illuminate\Foundation\Application(
+    realpath(__DIR__.'/../')
+);
+
+
+Por:
+
+
+
+$app = new Illuminate\Foundation\Application(
+    realpath(__DIR__.'/../')
+);
+
+$app->bind('path.public', function() {
+
+return base_path().'/../public_gym/';
+
+});
+
+
+
+y listo... ahora solo tenemos que ingresar al navegador a la carpeta public_gym para usar el proyecto: localhost/public_gym
+
+
+
