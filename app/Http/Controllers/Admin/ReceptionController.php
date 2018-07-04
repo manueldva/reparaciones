@@ -52,6 +52,7 @@ class ReceptionController extends Controller
         
         $clients   = Client::orderBy('name', 'ASC')->pluck('name', 'id');
 
+        //dd($clients);
         //$clients    = Client::orderBy('name', 'ASC')->pluck('name', 'id');
         $reasons    = Reason::orderBy('description', 'ASC')->pluck('description' , 'id');
         $equipments = Equipment::orderBy('description', 'ASC')->pluck('description' , 'id');
