@@ -114,7 +114,7 @@ class ManageuserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         
         if ($request->input('name') == ''  || $request->input('username') == '' || $request->input('email') == '') 

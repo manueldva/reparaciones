@@ -23,6 +23,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this->id);
         return [
             'name'      => 'required',
             'username'  => 'required|unique:users,username,' . $this->user,
