@@ -8,12 +8,6 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Ver Recepción</strong>	
-					</a>
-					@if($reception->status == 'RECEIVED')
-						<a  href="{{ route('printvoucherreception', $reception->id) }}" class="btn btn-sm btn-default pull-right" target="_blank">
-							Imprimir Comprobante
-						</a>
-					@endif
 				</div>
 		
 				<div class="panel-body">

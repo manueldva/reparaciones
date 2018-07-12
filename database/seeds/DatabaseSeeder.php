@@ -15,8 +15,18 @@ class DatabaseSeeder extends Seeder
             'name' => 'administrador',
             'username' => 'admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('@dmin2018'),
             'userType' => 'ADMINISTRATOR',
         ]);
+
+
+        DB::table('empresas')->insert([
+            'nombre' => 'nombre empresa',
+            'direccion' => 'S/D',
+            'cuit' => '11-11111111-3',
+            'ingresosbrutos' => '11-11-11111111-3',
+            'inicioactividades' => '2000-01-01',
+        ]);
+
     }
 }

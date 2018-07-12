@@ -24,7 +24,7 @@ class ReceptionUpdateRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'client_id'     => 'required',
+            //'client_id'     => 'required',
             'equipment_id'  => 'required',
             'description'   => 'required',
             'reason_id'     => 'required',

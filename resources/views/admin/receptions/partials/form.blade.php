@@ -1,7 +1,12 @@
 
 <div class="form-group">
 	{{ form::label('client_id', 'Cliente:') }}
-	{{ form::select('client_id', $clients, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar...', 'id' => 'client_id' ] ) }}
+	@if(isset($reception))
+		{{ form::text('clientname', $reception->client->name, ['class' => 'form-control', 'disabled']) }}
+	@else
+
+		{{ form::select('client_id', $clients, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar...', 'id' => 'client_id' ] ) }}
+	@endif
 </div>
 
 <div class="form-group">
@@ -15,7 +20,7 @@
 </div>
 
 <div class="form-group">
-    {{ Form::label('image', 'Imagen:') }}
+    {{ Form::label('image', 'Imagen (Opcional):') }}
     {{ Form::file('image') }}
 </div>
 
@@ -55,7 +60,7 @@
 
 
 <div class="form-group">
-	<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+	<button type="submit" class="btn btn-sm btn-primary"> Guardar</button>
 </div>
 
 @section('js')
@@ -69,6 +74,9 @@
 
 		
 		$('#client_id').select2();
+		$('#equipment_id').select2();
+		$('#reason_id').select2();
+		
 
 	</script>
 @endsection

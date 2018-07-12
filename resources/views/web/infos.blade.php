@@ -29,7 +29,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
+                                        <span class="pull-left"></span><!-- ver detalle va aca-->
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
+                                        <span class="pull-left"></span> <!-- ver detalle va aca-->
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>
@@ -73,7 +73,7 @@
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Ver detalles</span>
+                                        <span class="pull-left"></span><!-- ver detalle va aca-->
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>

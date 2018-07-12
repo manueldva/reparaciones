@@ -34,7 +34,7 @@ class Delivery extends Model
 			})->orderBy('id', 'DESC');
         } else
         {
-            $query;
+            $query->orderBy('id', 'DESC');;
         }
     }
 }

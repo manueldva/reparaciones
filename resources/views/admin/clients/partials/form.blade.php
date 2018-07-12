@@ -11,15 +11,15 @@
 	{{ form::number('cellPhone', null, ['class' => 'form-control', 'id' => 'cellPhone']) }}
 </div>
 <div class="form-group">
-	{{ form::label('phone', 'Nro Telefono:') }}
+	{{ form::label('phone', 'Nro Telefono (opcional):') }}
 	{{ form::number('phone', null, ['class' => 'form-control', 'id' => 'phone']) }}
 </div>
 <div class="form-group">
-	{{ form::label('email', 'Correo Electronico:') }}
+	{{ form::label('email', 'Correo Electronico (opcional):') }}
 	{{ form::email('email', null, ['class' => 'form-control', 'id' => 'email']) }}
 </div>
 <div class="form-group">
-	<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+	<button type="submit" class="btn btn-sm btn-primary"></span> Guardar</button>
 </div>
 
 

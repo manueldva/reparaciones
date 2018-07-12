@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+
+@section('include_delete')
+	@include('include.modal-delete')
+@stop
+
+
 @section('content')
 
 <div class="container">
@@ -17,10 +23,10 @@
 							{{ form::select('type', config('options.deliverytypes'), null, ['class' => 'form-control', 'id' => 'type'] ) }}
 							{{ form::text('val', null, ['class' => 'form-control', 'id' => 'val']) }}
 							
-							<button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+							<button type="submit" class="btn btn-sm btn-success"> Buscar</button>
 							@if(Auth::user()->userType !== 'READONLY')
 							<a href="{{ route('deliveries.create')}}" class="btn btn-sm btn-primary">
-								<span class="glyphicon glyphicon-plus"></span> Crear
+								 Crear
 							</a>	
 							@endif
 						</div>
@@ -35,7 +41,7 @@
 				<div class="panel-body">
 
 					<div class="table-responsive">
-						<table class="table table-striped table-hover">
+						<table class="table table-striped table-hover" data-form="Form">
 							<thead>
 								<tr>
 									<!--<th width="10px"> ID</th>-->
@@ -58,29 +64,35 @@
 												Ver
 											</a>
 										</td>
-										@if(Auth::user()->userType !== 'READONLY')
+									
 										<td width="10px">
-											<a href="{{ route('deliveries.edit', $delivery->id) }}" class="btn btn-sm btn-default">
-												Editar
-											</a>
+											@if(Auth::user()->userType !== 'READONLY')
+												@if($delivery->status == 'NOTPRINTED')
+													<a href="{{ route('deliveries.edit', $delivery->id) }}" class="btn btn-sm btn-default">
+														Editar
+													</a>
+												@endif
+											@endif
 										</td>
 										<td width="10px">
-											{{ Form::open(['route' => ['deliveries.destroy', $delivery->id], 'method' => 'DELETE']) }}
-												{!! Form::open(['route' => ['deliveries.destroy', $delivery->id], 'method' => 'DELETE']) !!}
-	                                        	<button class="btn btn-sm btn-danger">
-	                                            	Eliminar
-	                                        	</button>                           
-	                                    	{!! Form::close() !!}
+											@if(Auth::user()->userType !== 'READONLY')
+												@if($delivery->status == 'NOTPRINTED')
+													{!! Form::model($delivery, ['method' => 'delete', 'route' => ['deliveries.destroy', $delivery->id], 'class' =>'form-inline form-delete']) !!}
+													{!! Form::hidden('id', $delivery->id) !!}
+													{!! Form::submit('Eliminar', ['class' => 'btn btn-sm btn-danger delete', 'name' => 'delete_modal']) !!}
+													{!! Form::close() !!}
+												@endif
+											@endif
 										</td>
-										@endif
+
 									</tr>
 								@endforeach
 							</tbody>
 						</table>
 					</div>	
-					
 					{{ $deliveries->appends(Request::only(['type', 'val']))->render() }}
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -90,9 +102,39 @@
 
 
 @section('scripts')
+
+	
+	<script src="{{ asset('js/resources/confirm-delete-general.js') }}"></script>
+
 	<script type="text/javascript">
 
+		
 		function searchType(){ 
+		   var type = $('#type').val();
+			if (type == 'date'){
+				$('#val').attr('type','date');
+				$('#val').focus();
+			} else if (type == 'id')
+			{
+				$('#val').attr('type','number');
+				$('#val').focus();
+			} else
+			{
+				$('#val').attr('type','text');
+				$('#val').focus();
+			}
+		}
+
+		searchType(); 
+		
+
+		$('#type').change(function(e) {
+			searchType(); 
+			$('#val').val('');
+			$('#val').focus();
+		});
+
+		/*function searchType(){ 
 		   var type = $('#type').val();
 			if (type == 'date'){
 				$('#val').attr('type','date');
@@ -116,7 +158,7 @@
 
 		$('#type').change(function(e) {
 			searchType(); 
-		});
+		});*/
 
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
 	</script>

@@ -58,8 +58,8 @@
 
 
 						<div class="form-group">
-							<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-							<a href="{{ route('info') }}" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+							<button type="submit" class="btn btn-sm btn-primary"> Guardar</button>
+							<a href="{{ route('info') }}" class="btn btn-sm btn-danger"> Cancelar</a>
 						</div>
 
 

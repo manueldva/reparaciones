@@ -8,6 +8,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Ver Razon</strong>	
+					<a  href="{{ route('reasons.index') }}" class="btn btn-sm btn-default pull-right">
+						Listado
+					</a>
 				</div>
 		
 				<div class="panel-body">

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+
+@section('include_delete')
+	@include('include.modal-delete')
+@stop
+
+
 @section('content')
 
 <div class="container">
@@ -16,7 +22,7 @@
 
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table class="table table-striped table-hover">
+						<table class="table table-striped table-hover" data-form="Form">
 							<thead>
 								<tr>
 									<th width="10px"> ID</th>
@@ -44,12 +50,10 @@
 											</a>
 										</td>
 										<td width="10px">
-											{{ Form::open(['route' => ['manageusers.destroy', $user->id], 'method' => 'DELETE']) }}
-												{!! Form::open(['route' => ['manageusers.destroy', $user->id], 'method' => 'DELETE']) !!}
-	                                        	<button class="btn btn-sm btn-danger">
-	                                            	Eliminar
-	                                        	</button>                           
-	                                    	{!! Form::close() !!}
+											{!! Form::model($user, ['method' => 'delete', 'route' => ['manageusers.destroy', $user->id], 'class' =>'form-inline form-delete']) !!}
+											{!! Form::hidden('id', $user->id) !!}
+											{!! Form::submit('Eliminar', ['class' => 'btn btn-sm btn-danger delete', 'name' => 'delete_modal']) !!}
+											{!! Form::close() !!}
 										</td>
 									</tr>
 								@endforeach
@@ -67,6 +71,9 @@
 
 
 @section('scripts')
+
+	<script src="{{ asset('js/resources/confirm-delete-general.js') }}"></script>
+	
 	<script type="text/javascript">
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350) 
 	</script>

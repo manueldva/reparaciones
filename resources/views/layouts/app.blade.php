@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link  rel="icon" href="{!! asset('imagedefault/icono.ico') !!}"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'CMS') }}</title>
+
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +34,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'CMS') }}
                     </a>
                 </div>
 
@@ -41,11 +44,13 @@
                         <li><a href="{{ route('info') }}"> Info</a></li>
                     </ul>
 
+
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}"> <span class="glyphicon glyphicon-share-alt"></span> Iniciar Sesión</a></li>
+                            <li><a href="{{ route('login') }}">  Iniciar Sesión</a></li>
                             
                         @else
                             <li>
@@ -76,6 +81,14 @@
                                 </ul>
                                 
                             </li>
+                            @if(Auth::user()->userType !== 'READONLY')
+                                <li>
+                                    <a id="empresas" href="{{ route('empresas.edit', 1) }}"> 
+                                        Empresa
+                                    </a>
+                                </li>   
+                            @endif
+
                             @if(Auth::user()->userType == 'ADMINISTRATOR')
                             <li>
                                 <a id="users" href="{{ route('manageusers.index') }}">Usuarios </a>
@@ -99,6 +112,8 @@
                                     <li>
                                         <a id="showSetting" href="{{ route('showSetting', Auth::user()->id) }}">Ajustes </a>
                                     </li>
+
+
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -120,7 +135,7 @@
             </div>
         </nav>
 
-
+        @yield('include_delete')
         
         @if(session('danger'))
             <div class="container">
@@ -196,6 +211,10 @@
         } else if (pathname.indexOf('reasons') != -1) {
 
             $('#complements').css('background','#B5DEF7');
+
+        } else if (pathname.indexOf('empresas') != -1) {
+
+            $('#empresas').css('background','#B5DEF7');
         }
 
     </script>

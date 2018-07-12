@@ -7,14 +7,14 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong> Editar Usuario </strong>
+					<strong> Editar Empresa </strong>
 				</div>
 		
 				<div class="panel-body">
 
-					{!! Form::model($user, ['route' => ['manageusers.update', $user->id], 'method' => 'PUT']) !!}
+					{!! Form::model($empresa, ['route' => ['empresas.update', $empresa->id], 'method' => 'PUT', 'files' => true]) !!}
                         
-                        @include('admin.manageusers.partials.form')
+                        @include('admin.empresas.partials.form')
 
                     {!! Form::close() !!}
 
@@ -25,4 +25,3 @@
 </div>
 
 @endsection
-

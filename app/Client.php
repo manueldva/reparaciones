@@ -23,16 +23,16 @@ class Client extends Model
 		
 		if ($type == 'address')
         {
-            $query->where('address', 'like', '%' . $valor . '%')->orderBy('id', 'DESC');
+            $query->where('address', 'like', '%' . $valor . '%')->orderBy('name');
         } else if ($type == 'client') 
         {
 			//$query->where('id', $valor)->orderBy('id', 'ASC');
-    		$query->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'DESC');
+    		$query->where('name', 'like', '%' . $valor . '%')->orderBy('name');
 			//$query->client()->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'ASC');
 
         } else
         {
-            $query;
+            $query->orderBy('name');
         }
     }
 }

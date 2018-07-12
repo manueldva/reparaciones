@@ -8,6 +8,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>Ver Equipo</strong>	
+					<a  href="{{ route('equipments.index') }}" class="btn btn-sm btn-default pull-right">
+						Listado
+					</a>
 				</div>
 		
 				<div class="panel-body">

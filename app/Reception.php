@@ -33,22 +33,26 @@ class Reception extends Model
     	return $this->HasMany(Delivery::class);
     }
 
-    public function scopeType($query, $type, $valor) 
+    public function scopeType($query, $type, $valor, $status) 
     {
 		
 		if ($type == 'id')
         {
-            $query->where('id', $valor)->orderBy('id', 'ASC');
+            $query->where('id', $valor)->orderBy('id', 'DESC');
         } else if ($type == 'client') 
         {
 			$query->whereHas('client', function ($clients) use($valor) {
     			$clients->where('name', 'like', '%' . $valor . '%');
 			})->orderBy('id', 'DESC');
 			//$query->client()->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'ASC');
-
+		} else if ($type == 'status') 
+        {
+			$query->where('status', $status)->orderBy('id', 'DESC');
+			//$query->client()->where('name', 'like', '%' . $valor . '%')->orderBy('id', 'ASC');
+				
         } else
         {
-            $query;
+            $query->orderBy('id', 'DESC');
         }
     }
 

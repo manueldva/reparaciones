@@ -51,8 +51,8 @@ class EquipmentController extends Controller
     {
         $equipment = Equipment::create($request->all());
 
-        Alert::success('Equipo creado con exito');
-        return redirect()->route('equipments.edit', $equipment->id);
+        Alert::success('Equipo creado con exito')->persistent('Cerrar');
+        return redirect()->route('equipments.index');
     }
 
     /**
@@ -95,8 +95,8 @@ class EquipmentController extends Controller
         $equipment->fill($request->all())->save();
 
         //return redirect()->route('admin.complements.equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
-        Alert::success('Equipo actualizado con exito');
-        return redirect()->route('equipments.edit', $equipment->id);
+        Alert::success('Equipo actualizado con exito')->persistent('Cerrar');
+        return redirect()->route('equipments.index');
     }
 
     /**
@@ -110,13 +110,13 @@ class EquipmentController extends Controller
         
         if(Reception::where('equipment_id', $id)->first()) 
         {
-            Alert::error('No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro')->persistent('Cerrar');
             return back();
         }
 
         Equipment::find($id)->delete();
 
-        Alert::success('Eliminado correctamente');
+        Alert::success('Eliminado correctamente')->persistent('Cerrar');
         return back();
     }
 }

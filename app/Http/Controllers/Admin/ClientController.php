@@ -53,8 +53,8 @@ class ClientController extends Controller
     public function store(ClientStoreRequest $request)
     {
         $clients = Client::create($request->all());
-        Alert::success('Cliente creado con exito');
-        return redirect()->route('clients.edit', $clients->id);
+        Alert::success('Cliente creado con exito')->persistent('Cerrar');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -96,8 +96,8 @@ class ClientController extends Controller
 
         $client->fill($request->all())->save();
 
-        Alert::success('Cliente actualizado con exito');
-        return redirect()->route('clients.edit', $client->id);
+        Alert::success('Cliente actualizado con exito')->persistent('Cerrar');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -111,13 +111,13 @@ class ClientController extends Controller
         
         if(Reception::where('client_id', $id)->first()) 
         {
-            Alert::error('No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro')->persistent('Cerrar');
             return back();
         }
 
         Client::find($id)->delete();
 
-        Alert::success('Eliminado correctamente');
+        Alert::success('Eliminado correctamente')->persistent('Cerrar');
         return back();
     }
 }

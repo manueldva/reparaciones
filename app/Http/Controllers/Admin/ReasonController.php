@@ -52,8 +52,8 @@ class ReasonController extends Controller
         $reason = Reason::create($request->all());
 
 
-        Alert::success('Razon creada con exito');
-        return redirect()->route('reasons.edit', $reason->id);
+        Alert::success('Razon creada con exito')->persistent('Cerrar');
+        return redirect()->route('reasons.index');
 
         //return redirect()->route('reasons.edit', $reason->id)->with('info', 'Razon creada con exito');
     }
@@ -98,8 +98,8 @@ class ReasonController extends Controller
         $reason->fill($request->all())->save();
 
         //return redirect()->route('admin.complements.equipments.edit', $equipment->id)->with('info', 'Equipo actualizado con exito');
-        Alert::success('Razon actualizada con exito');
-        return redirect()->route('reasons.edit', $reason->id);
+        Alert::success('Razon actualizada con exito')->persistent('Cerrar');
+        return redirect()->route('reasons.index');
     }
 
     /**
@@ -113,13 +113,13 @@ class ReasonController extends Controller
         
         if(Reception::where('reason_id', $id)->first()) 
         {
-            Alert::error('No se puede eliminar el registro');
+            Alert::error('No se puede eliminar el registro')->persistent('Cerrar');
             return back();
         }
 
         Reason::find($id)->delete();
 
-        Alert::success('Eliminado correctamente');
+        Alert::success('Eliminado correctamente')->persistent('Cerrar');
         return back();
     }
 }
