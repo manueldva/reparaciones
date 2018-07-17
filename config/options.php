@@ -14,8 +14,8 @@ return array(
 	'receptiontypes' => [
 		''    		=> 'Seleccionar',
 		'client'    => 'Cliente',
-		'id'  		=> 'Codigo'/*,
-		'status'	=> 'Estado'*/
+		'id'  		=> 'Codigo',
+		'status'	=> 'Estado'
 	],
 
 	'clienttypes' => [
